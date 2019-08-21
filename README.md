@@ -92,35 +92,46 @@ $ python labelImg.py
     </li>
 </ul>
 
-for image preprocessing, the tool used is LabelImg, resize the image to the certain pixel can slightly improve the model performance but limited. <br/> 
+<h6>Implementation details</h6> 
+- For image preprocessing, the tool used is LabelImg, resize the image to the certain pixel can slightly improve the model performance but limited. <br/> 
 
-data formatting from xml-> csv-> TFRecord, three document need to use 
+- Formatting training dataset from xml-> csv-> TFRecord, three document need to use <br/> 
 (you can find them on the first level of directory, but you can just select this and build for your own too, the files you need is xml_to_csv.py, split labels.ipynb, generate_tfrecord.py), all the generted training data train/validation.TFRecord data in to the YOUR/FOLDER/PATH/object_detection/data/ <br/> 
 
-config 3 more different files before training, to config the model architecture path and train/validation path 
-- faster_rcnn_resnet101_coco.config (or any other baseline models you prefer to use) in the training folder 
-- change .pbtxt file, to implement all your training classes here in the JSON format in the object_detection/data/
-- pipeline.config from object_detection/legacy/models/train/YOUR_MODEL_NAME (need download from <a href='https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md)'>tensorflow model zoo site</a> <br/> 
+- Config 3 more different files before training, to config the model architecture path and train/validation path <br/> 
+1. faster_rcnn_resnet101_coco.config (or any other baseline models you prefer to use) in the training folder <br/> 
+2. change .pbtxt file, to implement all your training classes here in the JSON format in the object_detection/data/ <br/> 
+3. pipeline.config from object_detection/legacy/models/train/YOUR_MODEL_NAME (need download from <a href='https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md)'>tensorflow model zoo site</a> <br/> 
 
-start training for 20k steps and config the tensorboard and check the graph trend for model performance during the training  
-first in the folder YOUR/FOLDER/PATH/models/research 
+-Start training for 20k steps and config the tensorboard and check the graph trend for model performance during the training <br/>  
+- first in the folder 
+```bash
+YOUR/FOLDER/PATH/models/research 
 $ protoc object_detection/protos/*.proto --python_out=.
 $ export
 PYTHONPATH=$PYTHONPATH::YOUR/FOLDER/PATH/models/research:YOUR/FOLDER/PATH/models/research/slim 
 config the training script on the folder path: YOUR/FOLDER/PATH/models/research/object_detection/legacy
+```
 example script: 
-python train.py --train_dir=YOUR/FOLDER/PATH/models/research/object_detection/legacy/models/train --pipeline_config_path=YOUR/FOLDER/PATH/training/faster_rcnn_resnet101_coco.config 
-training time for normally 2 hours in GPU but takes 10 more hours on CPU, check the tensorboard first to know the model performance and also to check if need to stop training to aviod overfitting problem 
+```bash
+$ python train.py --train_dir=YOUR/FOLDER/PATH/models/research/object_detection/legacy/models/train --pipeline_config_path=YOUR/FOLDER/PATH/training/faster_rcnn_resnet101_coco.config 
+```
+<i>training time normally 2 hours in GPU but takes 10 more hours on CPU, check the tensorboard first to know the model performance for both training and validation dataset, use the graph for the early stop to aviod overfitting problem, one of techniques for the regularization</i>
 
 model validation 
-on the folder location: YOUR/FOLDER/PATH/models/research/object_detection/legacy 
+```bash 
+$ YOUR/FOLDER/PATH/models/research/object_detection/legacy 
+```
 example script: 
-python eval.py --checkpoint_dir=YOUR/FOLDER/PATH/models/research/object_detection/legacy/models/train --eval_dir='eval' --pipeline_config_path=YOUR/FOLDER/PATH/training/faster_rcnn_resnet101_coco.config 
-
-model inference use the re-created file on the object detection folder,first export the model trained result 
-on the folder location: YOUR/FOLDER/PATH/models/research/object_detection/
+```bash 
+$ python eval.py --checkpoint_dir=YOUR/FOLDER/PATH/models/research/object_detection/legacy/models/train --eval_dir='eval' --pipeline_config_path=YOUR/FOLDER/PATH/training/faster_rcnn_resnet101_coco.config 
+```
+model inference use the recreated file on the object detection folder,first export the model trained result 
+```bash
+$ YOUR/FOLDER/PATH/models/research/object_detection/
+```
 example script: 
-python export_inference_graph.py --input_type image_tensor --pipeline_config_path YOUR/FOLDER/PATH/training/faster_rcnn_resnet101_coco.config --trained_checkpoint_prefix legacy/models/train/model.ckpt-YOUR-TRAINING-STEPS--output_directory legacy/models/train 
-
-then just config the saved_model path and class.pbtxt path on the inference code. 
-for the mAP and recall, the higher the better model performance, normally mAP around 50 is a good one. 
+```bash
+$ python export_inference_graph.py --input_type image_tensor --pipeline_config_path YOUR/FOLDER/PATH/training/faster_rcnn_resnet101_coco.config --trained_checkpoint_prefix legacy/models/train/model.ckpt-YOUR-TRAINING-STEPS--output_directory legacy/models/train 
+```
+then just config the saved_model path and class.pbtxt path on the inference code.for the mAP and recall, the higher the better model performance, normally mAP around 50 is a good one.
