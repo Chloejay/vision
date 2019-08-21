@@ -3,7 +3,7 @@
 <h6>other image related such as deep dreams, neural style and old fashion way to experiment image</h6> 
 
 I will first just write something I plan to write for the machine learning for SKL, Keras and TF here. 
-so when join the machine learning party, all we need to do is learn from the data by using the production-ready frameworks. 
+so when join the machine learning part, all we need to do is learn from the data by using the production-ready frameworks. 
 
 ## Getting started
 
@@ -38,12 +38,12 @@ on the path command
 $ ~/models/research
 $ protoc object_detection/protos/*.proto --python_out=.
 $ export
-PYTHONPATH=$PYTHONPATH::/home/ubuntu/cocacola-201904/coke_dataset/models/research:/home/ubuntu/cocacola-201904/coke_dataset/models/research/slim 
+PYTHONPATH=$PYTHONPATH::/home/ubuntu/YOUR/FOLDER/PATH/models/research:/home/ubuntu/YOUR/FOLDER/PATH/models/research/slim 
 ```
 
 ## Detailed set up instruction(to do) 
 <ul>
-  <li>Git clone [Tensorflow Models module](https://github.com/tensorflow/models.git)
+  <li>Git clone Tensorflow <a href='https://github.com/tensorflow/models.git'>Models module</a>
     
 ```bash
 $ git clone https://github.com/tensorflow/models.git 
