@@ -1,9 +1,50 @@
 <h6>Object detection the project I worked, here is the article I wrote on the medium</h6>
-<h6>Object segmentation</h6>
-<h6>other image related such as deep dreams, neural style and old fashion way to experiment image</h6> 
+<h6>Semantic segmentation</h6>
+<h6>Other image related such as deepdream</h6> 
+<h6>Face recognition by using Keras pretrained model</h6> 
+<h6>neural style</h6> 
 
-I will first just write something I plan to write for the machine learning for SKL, Keras and TF here. 
-so when join the machine learning part, all we need to do is learn from the data by using the production-ready frameworks. 
+<h4>Architecture:</h4>
+<ul>
+<li>AlexNet https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks 
+</li>
+<li>
+ZFNet: https://arxiv.org/abs/1311.2901 
+</li>
+<li>
+VGG16: https://arxiv.org/abs/1505.06798 
+</li>
+<li>GoogLeNet:https://arxiv.org/abs/1409.4842 </li>
+<li>ResNet:https://arxiv.org/abs/1704.06904</li>
+<li>Inception:https://arxiv.org/abs/1512.00567</li>
+<li>Xception:https://arxiv.org/abs/1610.02357</li>
+<li>MobileNet:https://arxiv.org/abs/1704.04861</li>
+</ul>
+<h4>Object detection</h4>
+<ul>
+<li>RCNN:https://arxiv.org/abs/1311.2524</li>
+<li>Fast-RCNN: https://arxiv.org/abs/1504.08083</li>
+<li>Faster-RCNN: https://arxiv.org/abs/1506.01497 </li>
+<li>SSD: https://arxiv.org/abs/1512.02325</li>
+<li>YOLO: https://arxiv.org/abs/1506.02640</li>
+<li>YOLO9000:https://arxiv.org/abs/1612.08242 </li>
+</ul>
+<h4>Semantic Segmentation</h4> 
+<ul>
+<li>FCN: https://arxiv.org/abs/1411.4038</li>
+<li>SegNet:https://arxiv.org/abs/1511.00561</li> 
+<li>UNet:https://arxiv.org/abs/1505.04597</li>
+<li>PSPNet:https://arxiv.org/abs/1612.01105</li>
+<li>DeepLab:https://arxiv.org/abs/1606.00915</li>
+<li>ICNet:https://arxiv.org/abs/1704.08545</li>
+<li>ENet:https://arxiv.org/abs/1606.02147</li> 
+</ul> 
+
+I will first just write something I plan to write for the machine learning user case with SKL, Keras and TF here, the high-level, production-ready framework.
+
+Resource: 
+<a href='http://blog.qure.ai/notes/semantic-segmentation-deep-learning-review'>Guide to Semantic Segmentation with Deep Learning</a> 
+<a href='https://arxiv.org/abs/1704.06857'>A Review on Deep Learning Techniques Applied to Semantic Segmentation</a>
 
 ## Getting started
 
@@ -60,7 +101,7 @@ $ make qt5py3
 ```
   </li>
   <li>Start the image label program 
-  
+
 ```bash 
 $ python labelImg.py 
 ``` 
@@ -103,7 +144,9 @@ $ python labelImg.py
 2. change .pbtxt file, to implement all your training classes here in the JSON format in the object_detection/data/ <br/> 
 3. pipeline.config from object_detection/legacy/models/train/YOUR_MODEL_NAME (need download from <a href='https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md)'>tensorflow model zoo site</a> <br/> 
 
--Start training for 20k steps and config the tensorboard and check the graph trend for model performance during the training <br/>  
+-Start training for 20k steps and config the tensorboard and check the graph trend for model performance during the training
+ <br/>
+ *be aware of speed-vs-accuracy tradeoff <br/> 
 - first in the folder 
 ```bash
 YOUR/FOLDER/PATH/models/research 
@@ -135,3 +178,7 @@ example script:
 $ python export_inference_graph.py --input_type image_tensor --pipeline_config_path YOUR/FOLDER/PATH/training/faster_rcnn_resnet101_coco.config --trained_checkpoint_prefix legacy/models/train/model.ckpt-YOUR-TRAINING-STEPS--output_directory legacy/models/train 
 ```
 then just config the saved_model path and class.pbtxt path on the inference code.for the mAP and recall, the higher the better model performance, normally mAP around 50 is a good one.
+
+## Use Keras for the image recognition, by using the VGGNet (inception) for transfer learning 
+<h6>why use scikit learn and Keras, for its the high built framework to let the model be ready for production and make the DS pipeline more easy, even with few experience, but tensorlfow low -level is useful tool that can be implemented the part lacking on Keras, remember the percentage normally is 95%-5% for using the Keras and Tensorflow</h6> 
+
