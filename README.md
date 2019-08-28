@@ -1,8 +1,8 @@
-<h6>Object detection the project I worked, here is the article I wrote on the medium</h6>
-<h6>Semantic segmentation</h6>
+<h6>Object detection the project I worked for detect the Coca Cola, here is the article I wrote on the medium</h6>
+<h6>Semantic segmentation(pixel level), reference is FCN or DeepLab pretraind model</h6> 
 <h6>Other image related such as deepdream</h6> 
-<h6>Face recognition by using Keras pretrained model</h6> 
-<h6>neural style</h6> 
+<h6>Keras pretrained model for transfer learning</h6> 
+<h6>neural style</h6>  
 
 <h4>Architecture:</h4>
 <ul>
@@ -24,27 +24,27 @@ VGG16: https://arxiv.org/abs/1505.06798
 <ul>
 <li>RCNN:https://arxiv.org/abs/1311.2524</li>
 <li>Fast-RCNN: https://arxiv.org/abs/1504.08083</li>
-<li>Faster-RCNN: https://arxiv.org/abs/1506.01497 </li>
-<li>SSD: https://arxiv.org/abs/1512.02325</li>
-<li>YOLO: https://arxiv.org/abs/1506.02640</li>
-<li>YOLO9000:https://arxiv.org/abs/1612.08242 </li>
+<li>Faster-RCNN: https://arxiv.org/abs/1506.01497 (useful one)</li>
+<li>SSD: https://arxiv.org/abs/1512.02325 (useful one)</li>
+<li>YOLO: https://arxiv.org/abs/1506.02640 (useful one)</li>
+<li>YOLO9000:https://arxiv.org/abs/1612.08242 </li> 
 </ul>
 <h4>Semantic Segmentation</h4> 
 <ul>
-<li>FCN: https://arxiv.org/abs/1411.4038</li>
+<li>FCN: https://arxiv.org/abs/1411.4038 (useful one)</li>
 <li>SegNet:https://arxiv.org/abs/1511.00561</li> 
-<li>UNet:https://arxiv.org/abs/1505.04597</li>
+<li>UNet:https://arxiv.org/abs/1505.04597 (useful one)</li>
 <li>PSPNet:https://arxiv.org/abs/1612.01105</li>
-<li>DeepLab:https://arxiv.org/abs/1606.00915</li>
+<li>DeepLab:https://arxiv.org/abs/1606.00915 (useful one)</li>
 <li>ICNet:https://arxiv.org/abs/1704.08545</li>
 <li>ENet:https://arxiv.org/abs/1606.02147</li> 
 </ul> 
 
-I will first just write something I plan to write for the machine learning user case with SKL, Keras and TF here, the high-level, production-ready framework.
+I will first just write something I plan to write for the machine learning user case with Sklearn, Keras and TF here, the high-level, production-ready framework. 
 
 Resource: 
 <a href='http://blog.qure.ai/notes/semantic-segmentation-deep-learning-review'>Guide to Semantic Segmentation with Deep Learning</a> 
-<a href='https://arxiv.org/abs/1704.06857'>A Review on Deep Learning Techniques Applied to Semantic Segmentation</a>
+<a href='https://arxiv.org/abs/1704.06857'>A Review on Deep Learning Techniques Applied to Semantic Segmentation</a> 
 
 ## Getting started
 
@@ -180,5 +180,6 @@ $ python export_inference_graph.py --input_type image_tensor --pipeline_config_p
 then just config the saved_model path and class.pbtxt path on the inference code.for the mAP and recall, the higher the better model performance, normally mAP around 50 is a good one.
 
 ## Use Keras for the image recognition, by using the VGGNet (inception) for transfer learning 
-<h6>why use scikit learn and Keras, for its the high built framework to let the model be ready for production and make the DS pipeline more easy, even with few experience, but tensorlfow low -level is useful tool that can be implemented the part lacking on Keras, remember the percentage normally is 95%-5% for using the Keras and Tensorflow</h6> 
+<h6>why use sklearn and Keras, for its the high-level and highly built framework to let the model be ready for production and make the DS pipeline more easy, even with few experience, but tensorlfow low -level is useful tool that can be implemented the part lacking on Keras, remember the percentage normally is around 95%-5% for using the Keras and Tensorflow, so focus on Keras on the daily workflow is the good starting</h6>
+
 
