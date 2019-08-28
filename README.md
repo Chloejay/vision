@@ -1,4 +1,4 @@
-<h6>Object detection the project I worked for detect the Coca Cola, here is the article I wrote on the medium</h6>
+<h6>Object detection the project I worked for detect the Coca Cola, here is the article I wrote on the medium, but for the business confidential, only use the smapled dataset</h6> 
 <h6>Semantic segmentation(pixel level), reference is FCN or DeepLab pretraind model</h6> 
 <h6>Other image related such as deepdream</h6> 
 <h6>Keras pretrained model for transfer learning</h6> 
@@ -180,6 +180,7 @@ $ python export_inference_graph.py --input_type image_tensor --pipeline_config_p
 then just config the saved_model path and class.pbtxt path on the inference code.for the mAP and recall, the higher the better model performance, normally mAP around 50 is a good one.
 
 ## Use Keras for the image recognition, by using the VGGNet (inception) for transfer learning 
-<h6>why use sklearn and Keras, for its the high-level and highly built framework to let the model be ready for production and make the DS pipeline more easy, even with few experience, but tensorlfow low -level is useful tool that can be implemented the part lacking on Keras, remember the percentage normally is around 95%-5% for using the Keras and Tensorflow, so focus on Keras on the daily workflow is the good starting</h6>
+
+<h6>why use sklearn and Keras, for its the high-level and highly built framework to let the model be ready for production and make the DS pipeline more easy, even with the few experience, but tensorlfow low -level is useful tool that can be implemented the part lacking on Keras, the percentage normally is around 95%-5% for using the Keras and Tensorflow, so focus on Keras on the daily workflow is the easy starting</h6> 
 
 
